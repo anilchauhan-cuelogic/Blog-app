@@ -1,0 +1,44 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+    encoders:
+        AppBundle\Entity\User:
+            algorithm: bcrypt
+            cost: 12
+
+    role_hierarchy:
+        ROLE_EDITOR:      ROLE_USER
+        ROLE_ADMIN:       ROLE_EDITOR
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+        user_db:
+            entity:
+               class: AppBundle:User
+               property: username
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            pattern:    ^/
+            anonymous: ~
+            http_basic: ~
+            provider: user_db
+            form_login:
+                login_path: /login
+                check_path: /login_check
+                default_target_path: /dashboard
+            logout:
+                path: logout
+                target: /login
+
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/logout, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/manage/user, roles: ROLE_ADMIN }
+        - { path: ^/manage/post, roles: ROLE_EDITOR }

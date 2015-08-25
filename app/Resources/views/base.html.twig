@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <ul class="record_actions">
+            <li>
+                <a href="{{ path('post_list') }}">
+                    Home
+                </a>
+            </li>
+            {% if is_granted('ROLE_ADMIN') %}
+                <li>
+                    <a href="{{ path('user') }}">
+                        Manage Users
+                    </a>
+                </li>
+            {% endif %}
+            {% if is_granted('ROLE_EDITOR') %}
+                <li>
+                    <a href="{{ path('post') }}">
+                        Manage Posts
+                    </a>
+                </li>
+            {% endif %}
+
+            {% if is_granted('ROLE_USER') %}
+                <li><a href="{{ path('logout') }}" >Logout</a></li>
+            {% else %}
+                <li><a href="{{ path('login_route') }}" >Sign In</a></li>
+            {% endif %}    
+        </ul>    
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+        
+    </body>
+</html>
