@@ -59,9 +59,6 @@ class PostController extends Controller
     /**
      * Creates a form to create a Post entity.
      *
-     * @param Post $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
      */
     private function createCreateForm(Post $entity)
     {
@@ -139,9 +136,6 @@ class PostController extends Controller
     /**
     * Creates a form to edit a Post entity.
     *
-    * @param Post $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
     */
     private function createEditForm(Post $entity)
     {
@@ -211,9 +205,6 @@ class PostController extends Controller
     /**
      * Creates a form to delete a Post entity by id.
      *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
      */
     private function createDeleteForm($id)
     {

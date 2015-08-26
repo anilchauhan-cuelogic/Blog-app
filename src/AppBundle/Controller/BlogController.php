@@ -13,7 +13,7 @@ class BlogController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $posts = $em->getRepository('AppBundle:Post')->findByIsActive(1);
+        $posts = $em->getRepository('AppBundle:Post')->fetchAllActivePosts();
 
         return $this->render('AppBundle:Blog:index.twig.html', array(
             'posts' => $posts,
@@ -24,7 +24,7 @@ class BlogController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $post = $em->getRepository('AppBundle:Post')->findOneBy(array("id" => $id, "isActive"=>"1"));
+        $post = $em->getRepository('AppBundle:Post')->fetchActivePostById($id);
 
         if(!$post) {
             throw new NotFoundHttpException( 'Invalid id. Try again' );
@@ -34,7 +34,7 @@ class BlogController extends Controller
         $form = $this->createCommentForm($id, $comment);
 
         return $this->render('AppBundle:Blog:show.twig.html', array(
-            'post' => $post,
+            'post' => $post[0],
             'comments' => $this->getComments($id),
             'form' => $form->createView(),
         ));

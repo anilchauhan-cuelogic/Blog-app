@@ -62,9 +62,6 @@ class UserController extends Controller
     /**
      * Creates a form to create a User entity.
      *
-     * @param User $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
      */
     private function createCreateForm(User $entity)
     {
@@ -142,9 +139,6 @@ class UserController extends Controller
     /**
     * Creates a form to edit a User entity.
     *
-    * @param User $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
     */
     private function createEditForm(User $entity)
     {
@@ -215,9 +209,6 @@ class UserController extends Controller
     /**
      * Creates a form to delete a User entity by id.
      *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
      */
     private function createDeleteForm($id)
     {

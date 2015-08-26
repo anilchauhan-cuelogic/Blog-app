@@ -39,7 +39,6 @@ class Post
      */
     private $updatedOn;
 
-
     /**
      * @var object $user
      */

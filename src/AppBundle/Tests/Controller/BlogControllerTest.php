@@ -22,7 +22,7 @@ class BlogControllerTest extends WebTestCase
         $postId = $db->fetchColumn( "SELECT id FROM post ORDER BY id DESC LIMIT 1" );
 
         $client = static::createClient();
-        $crawler = $client->request('GET', '/post/'.$postId);
+        $crawler = $client->request('GET', '/post/'.$postIds);
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
 
         $form = $crawler->selectButton('submit')->form(array(
