@@ -25,7 +25,7 @@ class PostController extends Controller
 
         $entities = $em->getRepository('AppBundle:Post')->fetchAllPosts();
 
-        return $this->render('AppBundle:Post:index.html.twig', array(
+        return $this->render('AppBundle:Post:index.twig.html', array(
             'entities' => $entities,
         ));
     }
@@ -50,7 +50,7 @@ class PostController extends Controller
             return $this->redirect($this->generateUrl('post_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('AppBundle:Post:new.html.twig', array(
+        return $this->render('AppBundle:Post:new.twig.html', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -81,7 +81,7 @@ class PostController extends Controller
         $entity = new Post();
         $form   = $this->createCreateForm($entity);
 
-        return $this->render('AppBundle:Post:new.html.twig', array(
+        return $this->render('AppBundle:Post:new.twig.html', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -103,7 +103,7 @@ class PostController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('AppBundle:Post:show.html.twig', array(
+        return $this->render('AppBundle:Post:show.twig.html', array(
             'entity'      => $entity[0],
             'delete_form' => $deleteForm->createView(),
         ));
@@ -126,7 +126,7 @@ class PostController extends Controller
         $editForm = $this->createEditForm($entity[0]);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('AppBundle:Post:edit.html.twig', array(
+        return $this->render('AppBundle:Post:edit.twig.html', array(
             'entity'      => $entity[0],
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -172,7 +172,7 @@ class PostController extends Controller
             return $this->redirect($this->generateUrl('post_edit', array('id' => $id)));
         }
 
-        return $this->render('AppBundle:Post:edit.html.twig', array(
+        return $this->render('AppBundle:Post:edit.twig.html', array(
             'entity'      => $entity[0],
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

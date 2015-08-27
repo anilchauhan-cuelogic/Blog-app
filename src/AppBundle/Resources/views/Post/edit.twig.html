@@ -1,0 +1,14 @@
+{% extends '::base.twig.html' %}
+
+{% block header -%}
+	{% include "header.twig.html" %}
+{% endblock %}
+
+{% block body -%}
+    <h1>Edit Post</h1>
+    
+    {{ form(edit_form) }}
+    {{ form(delete_form) }}
+    
+    <button onclick="location.href='{{ path('post')}}'">Back</button>
+{% endblock %}

@@ -1,12 +1,15 @@
-{% extends '::base.html.twig' %}
+{% extends '::base.twig.html' %}
+
+{% block header -%}
+    {% include "header.twig.html" %}
+{% endblock %}
 
 {% block body -%}
-    <h1>User list</h1>
+    <h1>Users</h1>
 
-    <table class="records_list">
+    <table border="1px">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
                 <th>Emailid</th>
                 <th>Actions</th>
@@ -15,14 +18,10 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.username }}</td>
+                <td><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.firstname ~ ' ' ~ entity.lastname}}</a> </td>
                 <td>{{ entity.emailId }}</td>
                 <td>
                 <ul>
-                    <li>
-                        <a href="{{ path('user_show', { 'id': entity.id }) }}">show</a>
-                    </li>
                     <li>
                         <a href="{{ path('user_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
@@ -32,12 +31,6 @@
         {% endfor %}
         </tbody>
     </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('user_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
+    <br/>
+    <button onclick="location.href='{{ path('user_new')}}'">Create New User</button>
     {% endblock %}

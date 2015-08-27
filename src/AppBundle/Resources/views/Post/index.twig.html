@@ -1,0 +1,35 @@
+{% extends '::base.twig.html' %}
+
+{% block header -%}
+    {% include "header.twig.html" %}
+{% endblock %}
+
+{% block body -%}
+    
+    <h1>Posts</h1>
+
+    <table border="1px">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('post_show', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
+                <td>{{ entity.isActive?'Yes':'No' }}</td>
+                <td>
+                    <a href="{{ path('post_edit', { 'id': entity.id }) }}">edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br/>
+
+    <button onclick="location.href='{{ path('post_new')}}'">Create New Post</button>
+   
+    {% endblock %}

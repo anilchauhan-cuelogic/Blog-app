@@ -1,0 +1,18 @@
+{% extends '::base.twig.html' %}
+
+{% block header -%}
+	{% include "header.twig.html" %}
+{% endblock %}
+
+{% block body -%}
+    <h1>Add Post</h1>
+
+    {{ form(form) }}
+
+ 
+	        <a href="{{ path('post') }}">
+	            Back to the posts
+	        </a>
+
+{% endblock %}
+																																		

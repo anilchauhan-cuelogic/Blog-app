@@ -25,7 +25,7 @@ class UserController extends Controller
 
         $entities = $em->getRepository('AppBundle:User')->findAll();
 
-        return $this->render('AppBundle:User:index.html.twig', array(
+        return $this->render('AppBundle:User:index.twig.html', array(
             'entities' => $entities,
         ));
     }
@@ -53,7 +53,7 @@ class UserController extends Controller
             return $this->redirect($this->generateUrl('user_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('AppBundle:User:new.html.twig', array(
+        return $this->render('AppBundle:User:new.twig.html', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -84,7 +84,7 @@ class UserController extends Controller
         $entity = new User();
         $form   = $this->createCreateForm($entity);
 
-        return $this->render('AppBundle:User:new.html.twig', array(
+        return $this->render('AppBundle:User:new.twig.html', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -106,7 +106,7 @@ class UserController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('AppBundle:User:show.html.twig', array(
+        return $this->render('AppBundle:User:show.twig.html', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -129,7 +129,7 @@ class UserController extends Controller
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('AppBundle:User:edit.html.twig', array(
+        return $this->render('AppBundle:User:edit.twig.html', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -176,7 +176,7 @@ class UserController extends Controller
             return $this->redirect($this->generateUrl('user_edit', array('id' => $id)));
         }
 
-        return $this->render('AppBundle:User:edit.html.twig', array(
+        return $this->render('AppBundle:User:edit.twig.html', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

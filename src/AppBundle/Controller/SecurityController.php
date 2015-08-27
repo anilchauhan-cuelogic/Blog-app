@@ -10,7 +10,7 @@ class SecurityController extends Controller
     public function loginAction(Request $request)
     {
         if( $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') ){    
-            return $this->redirectToRoute('dashboard');
+            return $this->redirectToRoute('post_list');
         }
         
         $authenticationUtils = $this->get('security.authentication_utils');

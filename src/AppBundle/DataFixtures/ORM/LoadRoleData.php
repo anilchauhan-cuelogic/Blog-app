@@ -27,6 +27,8 @@ class LoadRoleData extends AbstractFixture implements OrderedFixtureInterface
 		$manager->persist($editor);
 
 		$manager->flush();
+
+		$this->addReference('role-super-admin', $superAdmin);
 	}
 
 	/**

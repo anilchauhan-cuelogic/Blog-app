@@ -6,10 +6,6 @@ app_user:
     resource: "@AppBundle/Resources/config/routing/user.yml"
     prefix:   /manage/user
 
-dashboard:
-    path: /dashboard
-    defaults: { _controller: "AppBundle:Dashboard:index"}
-
 post_list:
     path: /
     defaults: { _controller: "AppBundle:Blog:index"}

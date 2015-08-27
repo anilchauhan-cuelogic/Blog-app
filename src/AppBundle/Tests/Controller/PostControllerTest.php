@@ -8,7 +8,7 @@ class PostControllerTest extends WebTestCase
 {
 
     protected static $USER = 'super_admin';
-    protected static $PASS = 'achauhan';
+    protected static $PASS = '123456';
 
     public function testManagePosts() {
 
